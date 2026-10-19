@@ -116,6 +116,7 @@ summary::-webkit-details-marker { display: none; }
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: minmax(75px, auto) 1fr 100px; /* logo height, content, footer height */
 	min-height: 100vh;
+	width: 100%;
 }
 
 header {
@@ -133,6 +134,7 @@ header {
 	*/
 
 	.logo {
+		padding-inline-start: 1rem;
 
 		img {
 			width: 150px;
@@ -145,7 +147,7 @@ header {
 		background: var(--krack-red);
 
 		@media (min-width: 700px) {
-			padding-inline-end: 2rem;
+			/* padding-inline-end: 2rem; */
 		}
 
 		details {
@@ -194,6 +196,7 @@ header {
 
 				@media (min-width: 700px) {
 					display: flex;
+					justify-content: space-evenly;
 					flex-grow: 1;
 					gap: 0ch;
 					background: transparent;
@@ -211,6 +214,8 @@ header {
 				a {
 					display: flex;
 					align-items: center;
+					justify-content: center;
+					flex: 1;
 					color: var(--bg-color);
 					text-decoration: none;
 					padding: 0.2em 1.25em;
