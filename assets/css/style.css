@@ -219,6 +219,8 @@ header {
 					color: var(--bg-color);
 					text-decoration: none;
 					padding: 0.2em 1.25em;
+					text-transform: uppercase;
+					font-weight: 500;
 
 					&:is(:hover, :focus),
 					[aria-current] & {
