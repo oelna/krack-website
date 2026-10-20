@@ -117,6 +117,10 @@ summary::-webkit-details-marker { display: none; }
 	grid-template-rows: minmax(75px, auto) 1fr 100px; /* logo height, content, footer height */
 	min-height: 100vh;
 	width: 100%;
+
+	@media (max-width: 699px) {
+		grid-template-columns: 1fr;
+	}
 }
 
 header {
@@ -196,6 +200,7 @@ header {
 
 				@media (min-width: 700px) {
 					display: flex;
+					flex-wrap: wrap;
 					justify-content: space-evenly;
 					flex-grow: 1;
 					gap: 0ch;
@@ -293,6 +298,10 @@ main {
 		grid-template-columns: 1fr 1fr;
 		grid-auto-rows: minmax(25vh, auto);
 
+		@media (max-width: 699px) {
+			grid-template-columns: 1fr;
+		}
+
 		& > section {
 			outline: 0px solid currentColor;
 			text-wrap: balance;
@@ -373,6 +382,7 @@ footer {
 	grid-column: 1 / -1;
 	padding: 0 1em;
 	display: flex;
+	flex-wrap: wrap;
 	gap: 4rem;
 	align-items: center;
 	justify-content: flex-start;
@@ -387,6 +397,7 @@ footer {
 
 	nav ul {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 1.25rem;
 		list-style: none;
 		padding-block-end: 0.2em; /* manually adjust so copyright and links are flush */
