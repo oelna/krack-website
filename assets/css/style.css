@@ -106,10 +106,18 @@ p {
 
 summary::-webkit-details-marker { display: none; }
 
-.font-large { font-size: 2rem; }
-.font-medium { font-size: 1.5rem; }
-.font-default { font-size: 1rem; }
+h1 { font-size: clamp(2rem, 2.5vw, 3rem); line-height: 1.2; }
+
+.font-large { font-size: clamp(1.35rem, (1.75vw + 0.85rem), 1.85rem); line-height: 1.2; }
+.font-medium { font-size: clamp(1.0rem, (1.75vw + 0.65rem), 1.5rem); }
+.font-default { font-size: font-size: clamp(0.85rem, (1.75vw + 0.5rem), 1.0rem); }
 .font-small { font-size: 85%; }
+
+.pad-zero {}
+.pad-large {
+	padding-block: min(2vw, 1.5rem) 2.5rem;
+	padding-inline: clamp(0.5rem, 2.5vw, 2rem) clamp(1.0rem, 2.5vw, 4rem);
+}
 
 .page {
 	display: grid;
@@ -225,11 +233,14 @@ header {
 					text-transform: uppercase;
 					font-weight: 500;
 					hyphens: none;
+					transition: background-color 0.25s ease;
 
 					&:is(:hover, :focus),
 					[aria-current] & {
 						text-decoration: underline;
 						text-decoration-thickness: 0.1em;
+
+						background-color: color-mix(in oklch, var(--krack-red), var(--bg-color) 5%);
 					}
 
 					@container (max-width: 49ch) {
@@ -311,8 +322,8 @@ main {
 			animation-delay: 1.5s; */
 			/* background-color: attr(data-background, red); */
 
-			&.pad-large {
-				padding: 2rem 4rem 2rem 2rem;
+			p {
+				max-width: 55ch;
 			}
 
 			details {
@@ -395,6 +406,8 @@ footer {
 		text-transform: uppercase;
 		font-weight: 500;
 		font-size: 85%;
+
+		p { margin: 0; }
 	}
 
 	nav ul {
