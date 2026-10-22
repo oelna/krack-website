@@ -5,8 +5,22 @@
 
 :root {
 	view-transition-name: none;
-	
+
 	interpolate-size: allow-keywords;
+
+	/* Fluid typography: 360px–1440px */
+	--step--1: clamp(0.875rem, 0.8333rem + 0.1852vw, 1rem);
+	--step-0: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+	--step-1: clamp(1.2rem, 1.1312rem + 0.3056vw, 1.4062rem);
+	--step-2: clamp(1.44rem, 1.3341rem + 0.4708vw, 1.7578rem);
+	--step-3: clamp(1.728rem, 1.5716rem + 0.6952vw, 2.1973rem);
+	--step-4: clamp(2.0736rem, 1.8493rem + 0.997vw, 2.7466rem);
+	--step-5: clamp(2.4883rem, 2.1734rem + 1.3999vw, 3.4332rem);
+
+	/* Fluid padding: 360px–1440px */
+	--pad-default: clamp(0.75rem, 0.5833rem + 0.7407vw, 1.25rem);
+	--pad-medium: clamp(1.25rem, 1rem + 1.1111vw, 2rem);
+	--pad-large: clamp(1.75rem, 1.3333rem + 1.8519vw, 3rem);
 
 	--bg-color: #fff;
 	--text-color: #000;
@@ -106,18 +120,32 @@ p {
 
 summary::-webkit-details-marker { display: none; }
 
-h1 { font-size: clamp(2rem, 2.5vw, 3rem); line-height: 1.2; }
+h1, h2, h3 {
+	line-height: 1.1;
+	text-wrap: balance;
+}
 
-.font-large { font-size: clamp(1.35rem, (1.75vw + 0.85rem), 1.85rem); line-height: 1.2; }
-.font-medium { font-size: clamp(1.0rem, (1.75vw + 0.65rem), 1.5rem); }
-.font-default { font-size: font-size: clamp(0.85rem, (1.75vw + 0.5rem), 1.0rem); }
-.font-small { font-size: 85%; }
+h1 { font-size: var(--step-5); }
+h2 { font-size: var(--step-4); }
+h3 { font-size: var(--step-3); }
+
+.font-large { font-size: var(--step-2); }
+.font-medium { font-size: var(--step-1); }
+.font-default { font-size: var(--step-0); }
+.font-small { font-size: var(--step--1); }
 
 .pad-zero {}
 .pad-large {
 	padding-block: min(2vw, 1.5rem) 2.5rem;
 	padding-inline: clamp(0.5rem, 2.5vw, 2rem) clamp(1.0rem, 2.5vw, 4rem);
+	padding: var(--pad-large);
+	padding-inline-start: var(--pad-large);
+	padding-inline-end: calc(var(--pad-large) * 1.5);
 }
+.pad-large { padding: var(--pad-large); }
+.pad-medium { padding: var(--pad-medium); }
+.pad-default { padding: var(--pad-default); }
+.pad-zero { padding: 0; }
 
 .page {
 	display: grid;
@@ -321,6 +349,8 @@ main {
 			/* animation: 0.5s ease-in-out fade-in;
 			animation-delay: 1.5s; */
 			/* background-color: attr(data-background, red); */
+
+			container-type: inline-size;
 
 			p {
 				max-width: 55ch;
